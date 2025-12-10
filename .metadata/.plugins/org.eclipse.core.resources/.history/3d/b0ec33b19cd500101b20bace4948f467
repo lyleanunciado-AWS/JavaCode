@@ -1,0 +1,12 @@
+package leap;
+
+public class LeapYear {
+/**
+ * 
+ * @param args
+ */
+public static void main (final String[] args) {
+	LeapYearChecker year1 = new LeapYearChecker(2016);
+	year1.isLeapYear();
+}
+}

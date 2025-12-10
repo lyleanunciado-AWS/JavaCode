@@ -1,0 +1,62 @@
+package com.apps;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
+class CalculatorTest {
+	
+	@BeforeAll
+	static void setup() {
+		System.out.println("Starting test...");
+	}
+	
+	@AfterAll
+	static void cleanup() {
+		System.out.println("Ending test...");
+	}
+	
+	@BeforeEach
+	void setEach() {
+		System.out.println("this is a test");
+	}
+	
+	@DisplayName("Test 4/2 = 2")
+	@ParameterizedTest
+	@MethodSource("integerDivisionInputParameters")
+	void testIntegerDivision_WhenFourIsDividedByTwo_ShouldReturnTwo(int divisor, int dividend, int expectedResult) {
+		Calculator calculator = new Calculator();
+		int result = calculator.integerDivision(divisor,dividend);
+		assertEquals(expectedResult, result, () -> "4 / 2 did not produce 2");
+	}
+	
+	private static Stream<Arguments> integerDivisionInputParameters(){
+		return Stream.of(
+				Arguments.of(4,2,2),
+				Arguments.of(3,1,3),
+				Arguments.of(10,2,5));
+	}
+	
+	@DisplayName("Division by zero")
+	@Test
+	void testIntegerDivision_WhenDividendIsDividedByZero_ShouldThrowArithmeticException(){
+		
+		System.out.println("Running division by zero");
+		int dividend = 4;
+		int divisor = 0;
+		String expectedExceptionMessage = "/ by zero";
+		Calculator calculator = new Calculator();
+		
+		ArithmeticException actualException = assertThrows(ArithmeticException.class, () -> {
+			calculator.integerDivision(dividend, divisor);
+		}, "Division by zero should have thrown an Arithmetic exception");
+		
+		assertEquals(expectedExceptionMessage, actualException.getMessage(), "Unexpected exception message.");
+	}
+}

@@ -1,0 +1,9 @@
+package sample1;
+
+public class Animal {
+	public static void main(String[] args) {
+//		Dog myDog = new Dog(); 
+		Dog.color = "red";
+		System.out.println(Dog.color);
+	}
+}

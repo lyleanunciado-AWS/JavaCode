@@ -1,0 +1,20 @@
+package sample;
+
+public final class FirstApp {
+	/**
+	*
+	*/
+	private FirstApp() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(final String[] args) {
+		StringBuilder a = new StringBuilder("Thank God");
+		a.append(" its friday!");
+		System.out.println(a);
+	}
+}

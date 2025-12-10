@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * 
+ */
+module JUnitProject {
+	requires org.junit.jupiter.api;
+}

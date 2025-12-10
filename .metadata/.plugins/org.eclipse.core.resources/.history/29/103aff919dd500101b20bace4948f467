@@ -1,0 +1,33 @@
+package leap;
+
+public class LeapYearChecker {
+    /**
+    *
+    */
+    int year;
+    /**
+    *
+    */
+    public LeapYearChecker(int year) {
+        this.year = year;
+    }
+    /**
+     *
+     */
+    public void isLeapYear() {
+        if (year % 400 == 0) {
+            System.out.println("true");
+            return;
+        }
+        else if (year % 100 == 0) {
+            System.out.println("false");
+            return;
+        }
+        else if (year % 4 == 0) {
+            System.out.println("true");
+			return;
+		}
+		System.out.println("false");
+		return;
+	}
+}

@@ -1,0 +1,9 @@
+package sample1;
+
+public class Animal {
+	public static void main(String[] args) {
+		Dog myDog = new Dog(2);
+		System.out.println(myDog.weight);
+		System.out.println(myDog.age);
+	}
+}
