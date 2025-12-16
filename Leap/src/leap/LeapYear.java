@@ -10,9 +10,9 @@ public final class LeapYear {
 /**
  * @param args
  */
-public static void main(final String[] args) {
-    final int year = 2017;
-    LeapYearChecker year1 = new LeapYearChecker(year);
-    year1.isLeapYear();
-}
+    public static void main(final String[] args) {
+        final int year = 2017;
+        LeapYearChecker year1 = new LeapYearChecker(year);
+        year1.isLeapYear();
+    }
 }

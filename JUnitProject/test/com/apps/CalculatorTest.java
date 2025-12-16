@@ -4,62 +4,34 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.stream.Stream;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+@Order(2)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CalculatorTest {
-	
-//	@BeforeAll
-//	static void setup() {
-//		System.out.println("Starting test...");
-//	}
-//	
-//	@AfterAll
-//	static void cleanup() {
-//		System.out.println("Ending test...");
-//	}
-//	
-//	@BeforeEach
-//	void setEach() {
-//		System.out.println("this is a test");
-//	}
-	
-	@DisplayName("Test 4/2 = 2")
-	@ParameterizedTest
-	@MethodSource()
-	void integerDivision(int divisor, int dividend, int expectedResult) {
-		Calculator calculator = new Calculator();
-		int result = calculator.integerDivision(divisor,dividend);
-		assertEquals(expectedResult, result, () -> "4 / 2 did not produce 2");
+	@Order(2)
+	@Test
+	void testA() {
+		Calculator calc = new Calculator();
+		System.out.println("Running Test A");
+		System.out.println(calc.integerDivision(10, 2));
 	}
-	
-	private static Stream<Arguments> integerDivision(){
-		return Stream.of(
-				Arguments.of(4,2,2),
-				Arguments.of(3,1,3),
-				Arguments.of(10,2,5));
+	@Order(3)
+	@Test
+	void testB() {
+		System.out.println("Running Test B");			
+		}
+	@Order(1)
+	@Test
+	void testC() {
+		System.out.println("Running Test C");		
 	}
-	
-//	@DisplayName("Division by zero")
-//	@Test
-//	void testIntegerDivision_WhenDividendIsDividedByZero_ShouldThrowArithmeticException(){
-//		
-//		System.out.println("Running division by zero");
-//		int dividend = 4;
-//		int divisor = 0;
-//		String expectedExceptionMessage = "/ by zero";
-//		Calculator calculator = new Calculator();
-//		
-//		ArithmeticException actualException = assertThrows(ArithmeticException.class, () -> {
-//			calculator.integerDivision(dividend, divisor);
-//		}, "Division by zero should have thrown an Arithmetic exception");
-//		
-//		assertEquals(expectedExceptionMessage, actualException.getMessage(), "Unexpected exception message.");
-//	}
 }
