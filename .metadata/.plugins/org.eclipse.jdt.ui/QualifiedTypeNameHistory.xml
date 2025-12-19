@@ -4,4 +4,5 @@
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="java.time.Month"/>
     <fullyQualifiedTypeName name="java.time.LocalTime"/>
+    <fullyQualifiedTypeName name="libraryexercise.Book"/>
 </qualifiedTypeNameHistroy>

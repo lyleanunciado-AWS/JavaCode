@@ -71,7 +71,6 @@ class BookRentalSystemTest {
 		BookRentalSystem.addBooks(fiction);
 		IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
 			BookRentalSystem.rentBooks(1);
-			System.out.println("hm");
 		});
 		assertEquals("Index 1 out of bounds for length 1",exception.getMessage());
 	}
@@ -85,19 +84,27 @@ class BookRentalSystemTest {
 		BookRentalSystem.displayAllBooks();
 		String actualOutput = outContent.toString().trim();
 		
-		assertEquals("The Lord of the Rings J.R.R. Tolkien 1954 The Tipping Point M. Gladwell 2000",actualOutput);
+		
+		assertEquals("The Lord of the Rings   J.R.R. Tolkien      1954\nThe Tipping Point   M. Gladwell      2000",actualOutput);
 	}
 	
 	@Test
 	void testDisplayRentedBooks_AddOneFictionOneNonRentOneBook_ExpectedAndActualMustReturnEqual() {
 		FictionBook fiction = new FictionBook("The Lord of the Rings", "J.R.R. Tolkien", 1954);
         NonFictionBook nonFiction = new NonFictionBook("The Tipping Point", "M. Gladwell", 2000);
-        BookRentalSystem.addBooks(fiction);
-		BookRentalSystem.addBooks(nonFiction);
+        ArrayList<Book> newBooks = new ArrayList<Book>();
+        newBooks.add(fiction);
+        newBooks.add(nonFiction);
+        BookRentalSystem.addBooks(newBooks);
 		BookRentalSystem.rentBooks(0);
 		BookRentalSystem.displayRentedBooks();
 		String actualOutput = outContent.toString().trim();
 		
-		assertEquals("The Lord of the Rings J.R.R. Tolkien 1954",actualOutput);
+		assertEquals("The Lord of the Rings   J.R.R. Tolkien      1954",actualOutput);
+	}
+	
+	@Test
+	void testMain_Void_MustReturnVoid() {
+		BookRentalSystem.main(null);
 	}
 }
