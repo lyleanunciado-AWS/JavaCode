@@ -27,6 +27,7 @@ public class Book {
         this.title = title1;
         this.author = author1;
         this.yearPublished = yearPublished1;
+        this.isRented = false;
     }
     /**
     *

@@ -53,6 +53,15 @@ public final class BookRentalSystem {
         library.get(index).rent();
     }
     /**
+    *
+    * @param indexes
+    */
+    public static void rentBooks(final int[] indexes) {
+        for (int index: indexes) {
+            library.get(index).rent();
+        }
+    }
+    /**
      *
      */
     public static void displayAllBooks() {
@@ -98,6 +107,9 @@ public final class BookRentalSystem {
         addBooks(newAddition);
 
         displayAllBooks();
+        int[] toRent = {1, 2};
+        rentBooks(toRent);
+        displayRentedBooks();
     }
 }
 
