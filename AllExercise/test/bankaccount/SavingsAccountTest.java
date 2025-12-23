@@ -29,9 +29,7 @@ class SavingsAccountTest {
 	@BeforeAll
 	static void testSavingsAccount_CreateInstanceOfSavingsAccount_DisplayOwnerName() {
 		savings = new SavingsAccount(custName);
-//		String output = outContent.toString();
 		assertEquals(custName,savings.getOwnerName());
-//		assertEquals(output, "Account Created: "+custName);
 	}
 	
 	@Test
@@ -40,7 +38,7 @@ class SavingsAccountTest {
 		savings.deposit(num);
 		assertEquals(savings.getBalance(), num);
 		String output = outContent.toString().trim();
-		assertEquals("Deposited: Php " + (double) num, output );
+		assertEquals("Deposited: Php " + (double) num + ".", output );
 	}
 	
 	@Test
@@ -156,8 +154,23 @@ class SavingsAccountTest {
 		savings.deposit(dep2);
 		savings.deposit(dep3);
 		assertEquals(sum, savings.getBalance());
-//		outContent.reset();
-//		savings.getBalance();
-//		assertEquals("Balance: Php 600", outContent.toString().trim());
+	}
+	
+	@Test
+	void testMain_DummyTest_MustReturnVoid() {
+		savings.main(null);
+	}
+	
+	@Test
+	void testResetAccount_AddMultipleDepositThenResetAccount_MustBeZero() {
+		int dep1 = 100;
+		int dep2 = 200;
+		int dep3 = 300;
+		
+		savings.deposit(dep1);
+		savings.deposit(dep2);
+		savings.deposit(dep3);
+		savings.resetAccount();
+		assertEquals(0, savings.getBalance());
 	}
 }

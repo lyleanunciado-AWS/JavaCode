@@ -28,23 +28,18 @@ public class SavingsAccount extends AbstractBankAccount {
         final int dep = 10000;
         final int wd = 100;
         final int wd2 = 5000;
-        System.out.println("Name: " + savings.ownerName);
-        System.out.println("Balance: " + savings.getBalance());
+
         savings.deposit(dep);
-        System.out.println("Balance: " + savings.getBalance());
         savings.withdraw(wd);
-        System.out.println("Balance: " + savings.getBalance());
 
         savings.freezeAccount();
-        System.out.println("Status: " + savings.isFrozen());
 
         savings.withdraw(wd2);
-        System.out.println("Balance: " + savings.getBalance());
 
         savings.unfreezeAccount();
-        System.out.println("Status: " + savings.isFrozen());
 
         savings.withdraw(wd2);
+
         System.out.println("Balance: " + savings.getBalance());
     }
 }

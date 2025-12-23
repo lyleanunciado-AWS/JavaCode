@@ -28,7 +28,7 @@ public abstract class AbstractBankAccount implements BankAccount {
         }
 
         balance += amount;
-        System.out.println("Deposited: Php " + amount);
+        System.out.println("Deposited: Php " + amount + ".");
     }
     /**
      * @param amount
