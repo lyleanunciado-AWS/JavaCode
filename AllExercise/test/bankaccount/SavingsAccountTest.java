@@ -115,7 +115,9 @@ class SavingsAccountTest {
 		int deposit = 1000;
 		int withdraw = 500;
 		savings.deposit(deposit);
+		outContent.reset();
 		savings.freezeAccount();
+		assertEquals("Account has been frozen.",outContent.toString().trim());
 		outContent.reset();
 		savings.withdraw(withdraw);
 		

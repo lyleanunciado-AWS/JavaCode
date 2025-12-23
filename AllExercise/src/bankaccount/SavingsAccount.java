@@ -41,5 +41,6 @@ public class SavingsAccount extends AbstractBankAccount {
         savings.withdraw(wd2);
 
         System.out.println("Balance: " + savings.getBalance());
+
     }
 }
