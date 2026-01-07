@@ -62,11 +62,21 @@ public class MovieBookingSystem extends BookingSystem {
 
         cinema.bookTicket(showTimeC, ticketsE); //4:00 PM : -5 tickets
         cinema.checkAllShowTime();
+
+        /* Should check invalid time slot. -Ken*/
+        /* Error message displayed: This timeslot is not available. -Lyle*/
+        cinema.bookTicket("tenOClickAM", ticketsE); //4:00 PM : -5 tickets
+
+        /* Keep this code for extra test case. Output is correct. -Ken*/
+        /* Error message displayed: This timeslot is not available. -Lyle*/
+        cinema.bookTicket("5:00 PM", ticketsE); //4:00 PM : -5 tickets
     }
 
+    /* Add description of the purpose/function of each variable. */
     /**
     * @param showTime
     * Prints amount of available seat if it exists.
+    * String showTime - is the Time slot to be inputed by the user
     */
     public void checkAvailability(final String showTime) {
         if (slot.containsKey(showTime)) {
