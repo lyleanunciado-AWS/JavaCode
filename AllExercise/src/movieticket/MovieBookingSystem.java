@@ -28,30 +28,40 @@ public class MovieBookingSystem extends BookingSystem {
     public static void main(final String[] args) {
         MovieBookingSystem cinema = new MovieBookingSystem();
 
+        final String showTimeA = "10:00 AM";
+        final String showTimeB = "1:00 PM";
+        final String showTimeC = "4:00 PM";
+
+        final int ticketsA = 5;
+        final int ticketsB = 100;
+        final int ticketsC = 3;
+        final int ticketsD = 2;
+        final int ticketsE = -5;
+
         System.out.println("TEST CASE 1 ==========================");
-        final String showTime1 = "10:00 AM";
-        final int tickets1 = 5;
-        cinema.bookTicket(showTime1, tickets1);
+
+        cinema.bookTicket(showTimeA, ticketsA); //10:00 AM : 5 tickets
 
         System.out.println("\n\nTEST CASE 2 ==========================");
-        final String showTime2 = "10:00 AM";
-        final int tickets2 = 100;
-        cinema.bookTicket(showTime2, tickets2);
+
+        cinema.bookTicket(showTimeA, ticketsB); //10:00 AM : 100 tickets
 
         System.out.println("\n\nTEST CASE 3 ==========================");
-        final String showTime3 = "10:00 AM";
-        final int tickets3 = 3;
-        cinema.cancelReservation(showTime3, tickets3);
+
+        cinema.cancelReservation(showTimeA, ticketsC); //10:00 AM : 3 tickets
 
         System.out.println("\n\nTEST CASE 4 ==========================");
-        final String showTime4 = "1:00 PM";
-        final int tickets4 = 2;
-        cinema.bookTicket(showTime4, tickets4);
+
+        cinema.bookTicket(showTimeB, ticketsD); //1:00 PM : 2 tickets
 
         System.out.println("\n\nTEST CASE 5 ==========================");
-        final String showTime5 = "1:00 PM";
-        final int tickets5 = 5;
-        cinema.cancelReservation(showTime5, tickets5);
+
+        cinema.cancelReservation(showTimeB, ticketsA); //1:00 PM : 5 tickets
+
+        System.out.println("\n\nTEST CASE 6 ==========================");
+
+        cinema.bookTicket(showTimeC, ticketsE); //4:00 PM : -5 tickets
+        cinema.checkAllShowTime();
     }
 
     /**
@@ -76,13 +86,16 @@ public class MovieBookingSystem extends BookingSystem {
     */
     public void bookTicket(final String showTime, final int tickets) {
         if (slot.containsKey(showTime)) {
-            if (tickets <= 0) {
-                System.out.println("Must enter positive ticket value.");
-            } else if (slot.get(showTime) < tickets) {
+            if (slot.get(showTime) < tickets) {
                 System.out.println("Not enough tickets available "
                 + "for this showtime.");
             } else {
                 slot.replace(showTime, slot.get(showTime) - tickets);
+                if (tickets <= 0) {
+                    slot.replace(showTime, slot.get(showTime) + tickets);
+                    System.out.println("Must enter positive ticket value.");
+                    return;
+                }
                 System.out.println(tickets
                 + " tickets successfully booked for " + showTime);
             }
@@ -100,13 +113,16 @@ public class MovieBookingSystem extends BookingSystem {
     public void cancelReservation(final String showTime, final int tickets) {
         if (slot.containsKey(showTime)) {
             int numberOfReservedSeats = TOTALROOMSEATS - slot.get(showTime);
-            if (tickets <= 0) {
-                System.out.println("Must enter positive ticket value.");
-            } else if (numberOfReservedSeats < tickets) {
+            if (numberOfReservedSeats < tickets) {
                 System.out.println("Invalid operation "
                 + "(Attempt to cancel more tickets than booked)");
             } else {
                 slot.replace(showTime, slot.get(showTime) + tickets);
+                if (tickets <= 0) {
+                    slot.replace(showTime, slot.get(showTime) + tickets);
+                    System.out.println("Must enter positive ticket value.");
+                    return;
+                }
                 System.out.println(tickets
                 + " tickets successfully cancelled for " + showTime);
             }
@@ -128,7 +144,6 @@ public class MovieBookingSystem extends BookingSystem {
      * Reset all available seats for each time slot to default.
      */
     public void resetBookingSystem() {
-        slot.replaceAll((key, value) -> TOTALROOMSEATS);
+        slot.replaceAll((_, _) -> TOTALROOMSEATS);
     }
 }
-
