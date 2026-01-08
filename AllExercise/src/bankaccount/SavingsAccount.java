@@ -17,30 +17,4 @@ public class SavingsAccount extends AbstractBankAccount {
     String getOwnerName() {
         return ownerName;
     }
-    /**
-    * @param args
-    *
-    */
-    public static void main(final String[] args) {
-        String customer = "John";
-
-        SavingsAccount savings = new SavingsAccount(customer);
-        final int dep = 10000;
-        final int wd = 100;
-        final int wd2 = 5000;
-
-        savings.deposit(dep);
-        savings.withdraw(wd);
-
-        savings.freezeAccount();
-
-        savings.withdraw(wd2);
-
-        savings.unfreezeAccount();
-
-        savings.withdraw(wd2);
-
-        System.out.println("Balance: " + savings.getBalance());
-
-    }
 }
