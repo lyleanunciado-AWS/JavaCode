@@ -1,20 +1,33 @@
 package bankaccount;
 
 public class CustomException {
-	public static class InsufficientFundsException extends Exception {
-		public InsufficientFundsException(String message) {
-			super(message);
-		}
-	}
-	public static class InvalidAmountException extends Exception {
-		public InvalidAmountException(String message) {
-			super(message);
-		}
-	}
-	public static class AccountFrozenException extends Exception {
-		public AccountFrozenException(String message) {
-			super(message);
-		}
-	}
-	
+    // Add suppress warnings
+    public static class InsufficientFundsException extends Exception {
+        /**
+         *
+         * @param message
+         */
+        public InsufficientFundsException(final String message) {
+            super(message);
+        }
+    }
+    public static class InvalidAmountException extends Exception {
+        /**
+        *
+        * @param message
+        */
+        public InvalidAmountException(final String message) {
+            super(message);
+        }
+    }
+    public static class AccountFrozenException extends Exception {
+        /**
+        *
+        * @param message
+        */
+        public AccountFrozenException(final String message) {
+            super(message);
+        }
+    }
+
 }
